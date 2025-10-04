@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100 Pontinhos - Gerenciador de Jogo</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-cards-blank"></i> 100 Pontinhos</h1>
+                <p>Gerenciador de Jogo de Cartas</p>
+            </div>
+        </header>
+
+        <!-- Setup Phase -->
+        <div id="setup-phase" class="phase active">
+            <div class="setup-container">
+                <h2><i class="fas fa-users"></i> Configurar Jogadores</h2>
+                
+                <div class="player-input-section">
+                    <div class="input-group">
+                        <input type="text" id="player-name" placeholder="Nome do jogador" maxlength="20">
+                        <button id="add-player" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="players-list">
+                    <h3>Jogadores (<span id="player-count">0</span>)</h3>
+                    <div id="players-container" class="players-grid">
+                        <div class="no-players">
+                            <i class="fas fa-user-plus"></i>
+                            <p>Adicione jogadores para começar</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-controls">
+                    <button id="start-game" class="btn btn-success" disabled>
+                        <i class="fas fa-play"></i> Iniciar Jogo
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Phase -->
+        <div id="game-phase" class="phase">
+            <div class="game-container">
+                <div class="game-header">
+                    <h2><i class="fas fa-gamepad"></i> Jogo em Andamento</h2>
+                    <button id="new-round" class="btn btn-secondary">
+                        <i class="fas fa-redo"></i> Nova Rodada
+                    </button>
+                </div>
+
+                <div class="scoreboard">
+                    <div class="scoreboard-header">
+                        <h3><i class="fas fa-trophy"></i> Placar</h3>
+                        <div class="round-info">
+                            Rodada: <span id="current-round">1</span>
+                        </div>
+                    </div>
+                    
+                    <div id="scoreboard-content" class="scoreboard-grid">
+                        <!-- Players will be dynamically added here -->
+                    </div>
+                </div>
+
+                <div class="round-scoring">
+                    <h3><i class="fas fa-calculator"></i> Pontuação da Rodada</h3>
+                    
+                    <div id="round-inputs" class="round-inputs-grid">
+                        <!-- Round inputs will be dynamically added here -->
+                    </div>
+
+                    <div class="round-controls">
+                        <button id="confirm-round" class="btn btn-primary" disabled>
+                            <i class="fas fa-check"></i> Confirmar Rodada
+                        </button>
+                        <button id="end-game" class="btn btn-danger">
+                            <i class="fas fa-stop"></i> Finalizar Jogo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Phase -->
+        <div id="results-phase" class="phase">
+            <div class="results-container">
+                <h2><i class="fas fa-trophy"></i> Resultado Final</h2>
+                
+                <div class="podium">
+                    <div class="winner">
+                        <div class="position">1º</div>
+                        <div class="player-info">
+                            <h3 id="winner-name">-</h3>
+                            <p id="winner-score">- pontos</p>
+                        </div>
+                        <div class="trophy">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="runner-up">
+                        <div class="position">2º</div>
+                        <div class="player-info">
+                            <h4 id="runner-up-name">-</h4>
+                            <p id="runner-up-score">- pontos</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="final-ranking">
+                    <h3>Classificação Final</h3>
+                    <div id="final-ranking-list" class="ranking-list">
+                        <!-- Final ranking will be displayed here -->
+                    </div>
+                </div>
+
+                <div class="game-controls">
+                    <button id="new-game" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Novo Jogo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
